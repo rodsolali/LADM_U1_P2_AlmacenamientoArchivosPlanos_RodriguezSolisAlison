@@ -35,6 +35,9 @@
         <argument
             android:name="precio"
             app:argType="string" />
+        <action
+            android:id="@+id/action_editarProductos_to_listaProductos"
+            app:destination="@id/listaProductos" />
     </fragment>
 
 </navigation>

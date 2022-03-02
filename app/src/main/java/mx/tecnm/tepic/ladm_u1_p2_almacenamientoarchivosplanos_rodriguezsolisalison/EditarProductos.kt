@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.databinding.FragmentAgregarBinding
 import mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.databinding.FragmentEditarProductosBinding
 import java.io.File
@@ -55,6 +56,8 @@ class EditarProductos : Fragment() {
             val file = File(primaryExternalStorage,arguments?.getString("nombre"))
             file.delete()
             agregar()
+            view?.findNavController()
+                ?.navigate(R.id.action_editarProductos_to_listaProductos)
         }
     }
 
