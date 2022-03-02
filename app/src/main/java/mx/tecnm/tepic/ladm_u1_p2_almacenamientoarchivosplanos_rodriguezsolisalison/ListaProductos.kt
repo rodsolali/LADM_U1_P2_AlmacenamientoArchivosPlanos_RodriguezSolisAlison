@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.databinding.FragmentListaProductosBinding
@@ -125,11 +127,9 @@ class ListaProductos : Fragment(),RecyclerAdapter.onClickListener {
                 }
             }
             else if (it.title.equals("Editar")) {
-                val bundle = Bundle()
-                bundle.putString("Nombre",nombre)
-                val fragment2 = EditarProductos()
-                fragment2.arguments = bundle
-                view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_listaProductos_to_editarProductos2) };
+                val bundle = bundleOf("nombre" to nombre,"precio" to precio.toString())
+                view?.findNavController()
+                    ?.navigate(R.id.action_listaProductos_to_editarProductos2, bundle)
                 menu.dismiss()
             }
             builder.show()
