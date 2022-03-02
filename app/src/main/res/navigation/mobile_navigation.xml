@@ -15,5 +15,23 @@
         android:name="mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.agregar"
         android:label="Agregar artículo"
         tools:layout="@layout/fragment_agregar" />
+    <fragment
+        android:id="@+id/listaProductos"
+        android:name="mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.ListaProductos"
+        android:label="Ver artículos"
+        tools:layout="@layout/fragment_lista_productos" >
+        <action
+            android:id="@+id/action_listaProductos_to_editarProductos2"
+            app:destination="@id/editarProductos" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarProductos"
+        android:name="mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.EditarProductos"
+        android:label="Editar productos"
+        tools:layout="@layout/fragment_editar_productos" >
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

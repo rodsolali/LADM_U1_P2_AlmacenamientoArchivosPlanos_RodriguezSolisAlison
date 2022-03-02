@@ -1,11 +1,15 @@
 package mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import mx.tecnm.tepic.ladm_u1_p2_almacenamientoarchivosplanos_rodriguezsolisalison.databinding.FragmentAgregarBinding
+import java.io.File
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,8 +42,39 @@ class agregar : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        b.btnagregar.setOnClickListener {
+            agregar()
+        }
     }
+    fun agregar(){
+        val filename = b.txtNombreP.text.toString()
+        if(filename==""){
+            Toast.makeText(context,"El nombre del producto no puede ser vacío",Toast.LENGTH_SHORT).show()
+            return
+        }
+        val fileContents = b.txtPrecioP.text.toString();
+            /*-----------Memoria interna----------------------
+            openFileOutput(filename, Context.MODE_PRIVATE).use {
+                        it.write(fileContents.toByteArray())
+                        Toast.makeText(this, "Se ha guardado el archivo con éxito", Toast.LENGTH_SHORT).show()
+                  }
+                        */
+            try {
+                val externalStorageVolumes: Array<out File> =
+                    ContextCompat.getExternalFilesDirs(requireContext(), null)
+                val primaryExternalStorage = externalStorageVolumes[0]
+                val file = File(primaryExternalStorage, filename) //crear archivo en memoria con ubicación y nombre
+                file.writeText(fileContents)//Escribir información en archivo
+                file.createNewFile() // crea el archivo
+                Toast.makeText(context, "Se ha guardado el archivo con éxito", Toast.LENGTH_SHORT).show()
+                b.txtNombreP.setText("")
+                b.txtPrecioP.setText("")
+            }
+            catch (io: SecurityException) {
+                Toast.makeText(context,"Ocurrio un error al guardar",Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     companion object {
         /**

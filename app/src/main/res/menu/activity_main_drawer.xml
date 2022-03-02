@@ -12,5 +12,10 @@
             android:id="@+id/frag_agregar"
             android:icon="@drawable/agregar"
             android:title="Agregar artículo" />
+
+        <item
+            android:id="@+id/listaProductos"
+            android:icon="@drawable/ojo"
+            android:title="Ver artículos" />
     </group>
 </menu>

@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".agregar">
+    tools:context=".EditarProductos">
 
     <EditText
         android:id="@+id/txtNombreP"
@@ -35,10 +35,10 @@
         app:layout_constraintVertical_bias="0.246" />
 
     <Button
-        android:id="@+id/btnagregar"
+        android:id="@+id/btnEditar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AGREGAR"
+        android:text="EDITAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
